@@ -1,0 +1,47 @@
+
+@font-face {
+    font-family: mainFont;
+    src: url(LobsterThai-Regular.ttf);
+}
+
+body {
+    background: #6bcae2;
+    color: white;
+}
+
+.content-wrapper {
+    width: fit-content;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 30vh;
+    font-family: mainFont;
+}
+
+.random-content {
+    font-size: 10em;
+}
+
+.button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.random-button {
+    background: transparent;
+    border: #FFF 2px solid;
+    border-radius: 5px;
+    font-size: 2em; 
+    padding: 20px 0 20px 0;
+    width: 30vw;
+}
+
+.random-button:hover {
+    background: #FFF;
+    border: #6bcae2 2px solid;
+    color: #6bcae2;
+}
