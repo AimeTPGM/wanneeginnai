@@ -4,9 +4,26 @@
     src: url(LobsterThai-Regular.ttf);
 }
 
+*:focus {
+    outline: none;
+}
+
 body {
     background: #6bcae2;
     color: white;
+    position: relative;
+}
+
+.add-button-wrapper {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    font-size: 3em;
+}
+
+.add-button-wrapper a {
+    cursor: pointer;
+    color: #FFF;
 }
 
 .content-wrapper {
@@ -21,6 +38,15 @@ body {
     font-family: mainFont;
 }
 
+.content-wrapper input {
+    background: transparent;
+    border: 0;
+    border-bottom: #FFF 2px solid;
+    line-height: 2em;
+    font-size: 4em;
+    text-align: center;
+}
+
 .random-content {
     font-size: 10em;
 }
@@ -31,17 +57,29 @@ body {
     justify-content: center;
 }
 
-.random-button {
+.button-wrapper button {
     background: transparent;
     border: #FFF 2px solid;
     border-radius: 5px;
     font-size: 2em; 
     padding: 20px 0 20px 0;
-    width: 30vw;
 }
 
-.random-button:hover {
+.button-wrapper button:hover {
     background: #FFF;
     border: #6bcae2 2px solid;
     color: #6bcae2;
+}
+
+.random-button {
+    width: 30vw;
+}
+
+.action-button {
+    width: 25vw;
+    margin-top: 50px;
+}
+
+.action-button:first-child {
+    margin-right: 10px;
 }

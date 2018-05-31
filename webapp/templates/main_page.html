@@ -6,11 +6,16 @@
             <link rel="stylesheet" href="{% static 'style.css' %}">
     </head>
     <body>
+        <div class="add-button-wrapper">
+            {% if isShowingInput %}
+                <a href="{% url 'random' %}"><span class="glyphicon glyphicon-remove"></span></a>
+            {% else %}
+                <a href="{% url 'add' %}"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+        </div>
         <div class="content-wrapper">
-            <p class="random-content">วันนี้กินไหน</p>
-            <div class="button-wrapper">
-                <button class="random-button">I have concerns</button>                
-            </div>
+            {% block content %}
+            {% endblock %}
         </div>
     </body>
 </html>

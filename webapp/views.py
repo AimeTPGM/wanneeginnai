@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
-def main_page(request):
-    return render(request, 'main_page.html', {})
+def add(request):
+    print(request.path_info[1:])
+    return render(request, 'add.html', { 'isShowingInput': True })
+
+def random(request):
+    return render(request, 'random.html', { 'isShowingInput': False, 'firstRandom': True })
