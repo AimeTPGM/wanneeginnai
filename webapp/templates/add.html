@@ -1,13 +1,16 @@
 {% extends 'main_page.html' %}
 
 {% block content %}
-<input type="text">
-<div class="button-wrapper">
-    <button class="action-button">
-        <div>แอดเลย</div>
-    </button>   
-    <button class="action-button">
-        <div>ดูลิสต์</div>
-    </button>                
-</div>
+<form method="POST" class="add-form">{% csrf_token %}
+    {{ form }}
+    <div class="button-wrapper">
+        <button type="submit" class="action-button">
+            <div>แอดเลย</div>
+        </button>   
+        <button class="action-button">
+            <div>ดูลิสต์</div>
+        </button>                
+    </div>
+</form>
+
 {% endblock %}

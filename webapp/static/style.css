@@ -83,3 +83,7 @@ body {
 .action-button:first-child {
     margin-right: 10px;
 }
+
+.add-form label {
+    display: none;
+}
