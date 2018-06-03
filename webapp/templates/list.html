@@ -9,7 +9,7 @@
                     <div class="text">{{item.name}}</div>
                     <div class="list-item-button">
                         <a href="{% url 'add' %}"><span class="glyphicon glyphicon-pencil"></span></a>
-                        <a href="{% url 'add' %}"><span class="glyphicon glyphicon-trash"></span></a>
+                        <a href="{% url 'delete' pk=item.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
                     </div>
                 </div>
             </div>
@@ -18,6 +18,6 @@
 </div>
 <a href="{% url 'add' %}" class="back-button">
     <div class="back-button-text">กลับ</div>
-</a
+</a>
 
 {% endblock %}

@@ -29,3 +29,11 @@ def random(request):
 def listpage(request):
     nameQuerySet = Restuarant.objects.all()
     return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameQuerySet })
+
+def delete(request, pk):
+    try:
+        restuarant = Restuarant.objects.get(id=pk).delete()
+    except Restuarant.DoesNotExist:
+        print('not existed')
+    nameQuerySet = Restuarant.objects.all()
+    return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameQuerySet })
