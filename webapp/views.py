@@ -4,16 +4,19 @@ from .models import Restuarant
 from random import randint
 
 def add(request):
-    if request.method == "POST":
-        form = NameForm(request.POST)
-        if form.is_valid():
-            restuarant = form.save(commit=False)
-            restuarant.save()
-            nameList = Restuarant.objects.all()
-            return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameList })
-    else: 
-        form = NameForm()
-    return render(request, 'add.html', { 'isShowingInput': True, 'form': form, 'isShowingEdit': False })
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            form = NameForm(request.POST)
+            if form.is_valid():
+                restuarant = form.save(commit=False)
+                restuarant.save()
+                nameList = Restuarant.objects.all()
+                return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameList })
+        else: 
+            form = NameForm()
+        return render(request, 'add.html', { 'isShowingInput': True, 'form': form, 'isShowingEdit': False })
+    else:
+        return render(request, 'random.html', { 'isShowingInput': False, 'firstRandom': True, 'result': 'วันนี้กินไหน' })
 
 def mainpage(request):  
     return render(request, 'random.html', { 'isShowingInput': False, 'firstRandom': True, 'result': 'วันนี้กินไหน' })
@@ -30,21 +33,27 @@ def listpage(request):
     return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameQuerySet })
 
 def delete(request, pk):
-    try:
-        restuarant = Restuarant.objects.get(id=pk).delete()
-    except Restuarant.DoesNotExist:
-        print('not existed')
-    nameQuerySet = Restuarant.objects.all()
-    return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameQuerySet })
+    if request.user.is_authenticated:
+        try:
+            restuarant = Restuarant.objects.get(id=pk).delete()
+        except Restuarant.DoesNotExist:
+            print('not existed')
+        nameQuerySet = Restuarant.objects.all()
+        return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameQuerySet })
+    else:
+        return render(request, 'random.html', { 'isShowingInput': False, 'firstRandom': True, 'result': 'วันนี้กินไหน' })
 
 def edit(request, pk):
-    restuarant = get_object_or_404(Restuarant, pk=pk)
-    if request.method == "POST":
-        restuarantForm = NameForm(request.POST, instance=restuarant)
-        restuarant = restuarantForm.save(commit=False)
-        restuarant.save()
-        nameList = Restuarant.objects.all()
-        return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameList })
+    if request.user.is_authenticated:
+        restuarant = get_object_or_404(Restuarant, pk=pk)
+        if request.method == "POST":
+            restuarantForm = NameForm(request.POST, instance=restuarant)
+            restuarant = restuarantForm.save(commit=False)
+            restuarant.save()
+            nameList = Restuarant.objects.all()
+            return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameList })
+        else:
+            restuarantForm = NameForm(instance=restuarant)
+        return render(request, 'add.html', { 'isShowingInput': True, 'form': restuarantForm, 'isShowingEdit': True })
     else:
-        restuarantForm = NameForm(instance=restuarant)
-    return render(request, 'add.html', { 'isShowingInput': True, 'form': restuarantForm, 'isShowingEdit': True })
+        return render(request, 'random.html', { 'isShowingInput': False, 'firstRandom': True, 'result': 'วันนี้กินไหน' })
