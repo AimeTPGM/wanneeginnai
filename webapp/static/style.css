@@ -4,6 +4,10 @@
     src: url(LobsterThai-Regular.ttf);
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 *:focus {
     outline: none;
 }
@@ -58,7 +62,7 @@ body {
     justify-content: center;
 }
 
-.button-wrapper .action-button {
+.button-wrapper .action-button, .random-button {
     background: transparent;
     border: #FFF 2px solid;
     border-radius: 5px;
@@ -70,7 +74,7 @@ body {
     color: #FFF;
 }
 
-.button-wrapper .action-button:hover {
+.button-wrapper .action-button:hover, .random-button:hover {
     background: #FFF;
     border: #6bcae2 2px solid;
     color: #6bcae2;
@@ -92,4 +96,44 @@ body {
 
 .add-form label {
     display: none;
+}
+
+.list-wrapper {
+    width: 50vw;
+    height: 40vh;
+    overflow-y: scroll;
+}
+
+.list-wrapper .list {
+    width: 100%;
+}
+
+.list-wrapper .list .list-item {
+    padding: 20px 0 20px 0;
+    border-top: #FFF 1px solid;
+    font-size: 3em;
+}
+
+.list-wrapper .list .list-item:last-child {
+    border-bottom: #FFF 1px solid;
+}
+
+.list-wrapper .list .list-item .item-wrapper {
+    position: relative;
+}
+
+.list-wrapper .list .list-item .item-wrapper .text {
+    margin-left: 10px;
+}
+
+.list-wrapper .list .list-item .item-wrapper .list-item-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.list-wrapper .list .list-item .item-wrapper .list-item-button a {
+    padding: 0 10 0 10;
+    color: #FFF;
+    font-size: 0.8em;
 }
