@@ -13,7 +13,7 @@ def add(request):
             return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameList })
     else: 
         form = NameForm()
-    return render(request, 'add.html', { 'isShowingInput': True, 'form': form })
+    return render(request, 'add.html', { 'isShowingInput': True, 'form': form, 'isShowingEdit': False })
 
 def mainpage(request):  
     return render(request, 'random.html', { 'isShowingInput': False, 'firstRandom': True, 'result': 'วันนี้กินไหน' })
@@ -47,4 +47,4 @@ def edit(request, pk):
         return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameList })
     else:
         restuarantForm = NameForm(instance=restuarant)
-    return render(request, 'add.html', { 'isShowingInput': True, 'form': restuarantForm })
+    return render(request, 'add.html', { 'isShowingInput': True, 'form': restuarantForm, 'isShowingEdit': True })

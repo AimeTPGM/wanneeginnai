@@ -5,7 +5,11 @@
     {{ form }}
     <div class="button-wrapper">
         <button type="submit" class="action-button">
+            {% if isShowingEdit %}
+            <div>แก้จ้า</div>
+            {% else %}
             <div>แอดเลย</div>
+            {% endif %}
         </button>   
         <a class="action-button" href="{% url 'listpage' %}">
             <div>ดูลิสต์</div>
