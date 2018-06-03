@@ -110,12 +110,12 @@ body {
 
 .list-wrapper .list .list-item {
     padding: 20px 0 20px 0;
-    border-top: #FFF 1px solid;
+    border-top: #FFF 1.5px solid;
     font-size: 3em;
 }
 
 .list-wrapper .list .list-item:last-child {
-    border-bottom: #FFF 1px solid;
+    border-bottom: #FFF 1.5px solid;
 }
 
 .list-wrapper .list .list-item .item-wrapper {
@@ -136,4 +136,30 @@ body {
     padding: 0 10 0 10;
     color: #FFF;
     font-size: 0.8em;
+}
+
+.back-button .back-button-text {
+    width: 20vw;
+    background: transparent;
+    border: #FFF 2px solid;
+    border-radius: 5px;
+    font-size: 2em; 
+    padding: 20px 0 20px 0;
+    cursor: pointer;
+    text-align: center;
+    color: #FFF;
+    margin: auto;
+    margin-top: 30px;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    text-decoration: none;
+}
+
+.back-button:hover .back-button-text {
+    background: #FFF;
+    border: #6bcae2 2px solid;
+    color: #6bcae2; 
 }
