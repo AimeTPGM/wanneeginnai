@@ -45,6 +45,7 @@ body {
     line-height: 2em;
     font-size: 4em;
     text-align: center;
+    width: 100%;
 }
 
 .random-content {
@@ -57,18 +58,23 @@ body {
     justify-content: center;
 }
 
-.button-wrapper button {
+.button-wrapper .action-button {
     background: transparent;
     border: #FFF 2px solid;
     border-radius: 5px;
     font-size: 2em; 
     padding: 20px 0 20px 0;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #FFF;
 }
 
-.button-wrapper button:hover {
+.button-wrapper .action-button:hover {
     background: #FFF;
     border: #6bcae2 2px solid;
     color: #6bcae2;
+    text-decoration: none;
 }
 
 .random-button {
