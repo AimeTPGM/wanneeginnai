@@ -14,7 +14,11 @@
                     <a href="{% url 'add' %}"><span class="glyphicon glyphicon-plus"></span></a>
                 {% endif %}
             {% else %}
-                <a href="{% url 'listpage' %}"><span class="glyphicon glyphicon-list"></span></a>
+                {% if isShowingInput %}
+                    <a href="{% url 'mainpage' %}"><span class="glyphicon glyphicon-remove"></span></a>                    
+                {% else %}
+                    <a href="{% url 'listpage' %}"><span class="glyphicon glyphicon-list"></span></a>                
+                {% endif %}
             {% endif %}
         </div>
         <div class="content-wrapper">
