@@ -1,0 +1,20 @@
+{% extends 'main_page.html' %}
+
+{% block content %}
+<div class="list-wrapper">
+    <div class="list">
+        {% for item in nameList %}
+            <div class="list-item">
+                <div class="item-wrapper">
+                    <div class="text">{{item.name}}</div>
+                    <div class="list-item-button">
+                        <a href="{% url 'add' %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="{% url 'add' %}"><span class="glyphicon glyphicon-trash"></span></a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
