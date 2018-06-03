@@ -1,14 +1,14 @@
 {% extends 'main_page.html' %}
 
 {% block content %}
-<p class="random-content">วันนี้กินไหน</p>
+<div class="random-content">{{result}}</div>
 <div class="button-wrapper">
-    <button class="random-button">
+    <a class="random-button" href="{% url 'random' %}">
         {% if firstRandom %}
         <div>Go!</div>
         {% else %}
         <div>I have concerns</div>
         {% endif %}
-    </button>                
+    </a>                
 </div>
 {% endblock %}

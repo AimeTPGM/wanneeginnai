@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .form import NameForm
 from .models import Restuarant
+from random import randint
 
 def add(request):
     if request.method == "POST":
@@ -15,9 +16,16 @@ def add(request):
         form = NameForm()
     return render(request, 'add.html', { 'isShowingInput': True, 'form': form })
 
+def mainpage(request):  
+    return render(request, 'random.html', { 'isShowingInput': False, 'firstRandom': True, 'result': 'วันนี้กินไหน' })
+
 def random(request):
-    return render(request, 'random.html', { 'isShowingInput': False, 'firstRandom': True })
+    nameQuerySet = Restuarant.objects.all()    
+    randNum = randint(0, nameQuerySet.count()-1)
+    nameList = list(nameQuerySet)
+    result = nameList[randNum]
+    return render(request, 'random.html', { 'isShowingInput': False, 'firstRandom': False, 'result': result })
 
 def listpage(request):
-    nameList = Restuarant.objects.all()
-    return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameList })
+    nameQuerySet = Restuarant.objects.all()
+    return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameQuerySet })
