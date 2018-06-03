@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .form import NameForm
 from .models import Restuarant
 from random import randint
@@ -8,7 +8,6 @@ def add(request):
         form = NameForm(request.POST)
         if form.is_valid():
             restuarant = form.save(commit=False)
-            restuarant.author = request.user
             restuarant.save()
             nameList = Restuarant.objects.all()
             return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameList })
@@ -37,3 +36,15 @@ def delete(request, pk):
         print('not existed')
     nameQuerySet = Restuarant.objects.all()
     return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameQuerySet })
+
+def edit(request, pk):
+    restuarant = get_object_or_404(Restuarant, pk=pk)
+    if request.method == "POST":
+        restuarantForm = NameForm(request.POST, instance=restuarant)
+        restuarant = restuarantForm.save(commit=False)
+        restuarant.save()
+        nameList = Restuarant.objects.all()
+        return render(request, 'list.html', { 'isShowingInput': True, 'nameList': nameList })
+    else:
+        restuarantForm = NameForm(instance=restuarant)
+    return render(request, 'add.html', { 'isShowingInput': True, 'form': restuarantForm })
