@@ -82,6 +82,13 @@ body {
     text-decoration: none;
 }
 
+.button-wrapper .action-button:hover, .random-button:active {
+    background: #FFF;
+    border: #6bcae2 2px solid;
+    color: #6bcae2;
+    text-decoration: none;
+}
+
 .random-button {
     width: 30vw;
 }
